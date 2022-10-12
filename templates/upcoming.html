@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+</script>
+{% block body %}
+<div class="container">
+    <h1>Upcoming scheduled interviews</h2>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Interview No</th>
+              <th scope="col">Candidate name</th>
+              <th scope="col">Interviewer name</th>
+              <th scope="col">Date</th>
+              <th scope="col">Start Time</th>
+              <th scope="col">End time</th>
+              <th scope="col">Interview Link</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for interview in interviews %}
+            <tr>
+              <td name={{interview.sno}}>{{interview.sno}}</td>
+              <td>{{interview.Candidate.name}}</td>
+              <td>{{interview.interviewer.name}}</td>
+              <td>{{interview.date}}</td>
+              <td>{{interview.startTime}}</td>
+              <td>{{interview.endTime}}</td>
+              <td><a href="/open/{{interview.sno}}/{{interview.link}}">{{interview.link}}</a></td>
+              <td><a href="/edit/{{interview.sno}}">Edit</a></td>
+              <td><a href="/delete/{{interview.sno}}">Delete</a></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+</div>
+{% endblock body %}
+
+{% block script %}
+<script>
+  function my_func(h) {
+    console.log("called a function");
+}
+</script>
+{% endblock script %}

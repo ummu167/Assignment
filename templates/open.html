@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% block body %}
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row">Sno</td>
+        <td scope="row">{{interview.sno}}</td>
+      </tr>
+      <tr>
+        <td>Candidate Name</td>
+        <td>{{interview.Candidate.name}}</td>
+      </tr>
+
+      <tr>
+        <td>Candidate Email</td>
+        <td>{{interview.Candidate.email}}</td>
+      </tr>
+      <tr>
+        <td>Interviewer Name</td>
+        <td>{{interview.interviewer.name}}</td>
+      </tr>
+      <tr>
+        <td>Interviewer Email</td>
+        <td>{{interview.interviewer.email}}</td>
+      </tr>
+      <tr>
+        <td>Interview Link</td>
+        <td>{{interview.date}}</td>
+      </tr>
+      <tr>
+        <td>Interview Date</td>
+        <td>{{interview.date}}</td>
+      </tr>
+      <tr>
+        <td>Start Time</td>
+        <td>{{interview.startTime}}</td>
+      </tr>
+      <tr>
+        <td>End Time</td>
+        <td>{{interview.endTime}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <a href="/upcoming" role="button" class="btn btn-primary" action="/upcoming">Back</a>
+</div>
+{% endblock body %}

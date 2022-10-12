@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container my-3 " >
+    <h1>Schedule Interview</h1>
+    <div class ="container">
+    <form action="schedule" method="post" class="top">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="interviewerEmail">Interviewer Email address</label>
+            <input type="email" class=" form-control" name="interviewerEmail" id="interviewerEmail" aria-describedby="emailHelp" placeholder="Enter interviewer email" required>
+            
+            <label for="candidateEmail">Candidate Email address</label>
+            <input type="email" class=" form-control" name="candidateEmail" id="candidateEmail" aria-describedby="emailHelp" placeholder="Enter candidate email" required>
+            
+            <label for="link">Interview Link</label>
+            <input type="text" class=" form-control" name="link" id="link" aria-describedby="link" placeholder="Enter interview link" required>
+        </div>
+        <div class ="row">
+            <div class="form-group col-sm-4">
+                <label>Date</label>
+                <div>
+                    <input type="date" class="form-control " name="date" id="date"  placeholder="Enter interview Date" required>
+                </div>
+            </div>
+ 
+            <div class="form-group col-sm-4" >
+                <label>Start Time</label>
+                <div>
+                    <input type="time" class="form-control" name="startTime" id="startTime"  placeholder="Enter Start time" required>
+                </div>
+            </div>
+            <div class="form-group col-sm-4" >
+                <label>End Time</label>
+                <div>
+                    <input type="time" class="form-control" name="endTime" id="endTime"  placeholder="Enter end time" required>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Schedule Interview</button>
+    </form>
+    </div>
+</div>
+{% endblock body %}
