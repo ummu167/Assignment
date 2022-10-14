@@ -1,10 +1,14 @@
 from django.shortcuts import redirect, render
 from portal.models import Interviewer, Candidate, Interview
 from django.contrib import messages
+from django.contrib.auth.models import User
 import datetime
 # Create your views here.
 def home(request):
-    return render(request,'home.html')
+    if(request.user.is_authenticated):
+        if(request.user.is_superuser):
+            return render(request,'home.html')
+    return redirect("/admin/")
 
 def schedule(request,slug=""):
     print(slug)
@@ -95,10 +99,10 @@ def delete(request, slug):
 
 def open(request, slug, slug2):
     inter = Interview.objects.get(sno = slug, link = slug2)
-    if slug2 == inter.Candidate.email:
+    # if slug2 == inter.Candidate.email:
 
-        contents = {"interview":inter}
-        return render(request, "open.html",contents)
-    else:
-        messages.success(request, "Not authorized to open this link.")
-        return redirect("upcoming")
+    contents = {"interview":inter}
+    return render(request, "open.html",contents)
+    # else:
+    #     messages.success(request, "Not authorized to open this link.")
+    #     return redirect("upcoming")
